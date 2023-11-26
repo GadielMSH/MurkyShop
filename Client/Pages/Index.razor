@@ -1,0 +1,171 @@
+﻿@page "/"
+
+<link rel="stylesheet" href="css/warcraft.css" />
+<link rel="stylesheet" href="css/UsualButon.css" />
+
+<PageTitle>Murky Shop</PageTitle>
+
+
+<header style="font-size:60px">
+        <div class="row" style="font-size:60px">
+            <div class="col text-center">
+                ¡Te damos la bienvenida al abismo!
+            </div>
+        </div>
+        <div class="row">
+            <img src="/Images/CiudadSumergida.png" class="rounded img-fluid" alt="">    
+        </div>
+</header>
+
+<br>
+
+<body>
+    <div class="col">
+        <div class="col text-center" style="font-size:60px">
+                Encontraras todo para tener <br>
+                ¡el mejor acuario de las profundidades!
+            </div>
+
+            <br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            </div>
+
+            <div class="col-5 text-center" style="font-size:40px; place-items: center;">
+                
+                Una gran diversidad de ejemplares
+                <br>
+                <button class="boton-usual" type="submit" onclick="redirecPeces()">Ver catalogo</button>
+            </div>
+            <div class="col-4">
+                <img src="/Images/goldfish.png" style="float: right;
+                 width: 200px;
+                 height: auto;" alt="">
+            </div>
+
+            <div class="col">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            </div>
+
+            <div class="col-4">
+                <img src="/Images/acuario1.jpg" style="float: left;
+                 width: 250px;
+                 height: auto;" alt="">
+            </div>
+
+            <div class="col-5 text-center" style="font-size:40px; place-items: center;">
+
+                Todos los estilos y dimensiones de Peceras
+                <br>
+                <button class="boton-usual" type="submit" onclick="redirecPeceras()">Ver catalogo</button>
+            </div>
+
+            <div class="col">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            </div>
+
+            <div class="col-5 text-center" style="font-size:40px; place-items: center;">
+                <br>
+                No los dejes ¿ahogarse?
+                <br>
+                usa filtros
+                <br>
+                <button class="boton-usual" type="submit" onclick="redirecFiltros()">Ver catalogo</button>
+            </div>
+            <div class="col-4">
+                <img src="/Images/acuario3.jpg" style="float: right;
+                 width: 350px;
+                 height: auto;" alt="">
+            </div>
+
+            <div class="col">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            </div>
+
+            <div class="col-4">
+                <img src="/Images/Pocion.jpg" style="float: left;
+                 width: 250px;
+                 height: auto;" alt="">
+            </div>
+
+            <div class="col-5 text-center" style="font-size:40px; place-items: center;">
+
+                Acondiciona segun sus necesidades
+                <br>
+                <button class="boton-usual" type="submit" onclick="redirecAditivos()">Ver catalogo</button>
+            </div>
+
+            <div class="col">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <h1 style="font-size:18px">Esta pagina fue creada con fines academicos sin fines de lucro; el nombre, asi como el arte en las imagenes son propiedad de Blizzard Entertainment, Inc.</h1>
+</body>
+
+<script>
+    function redirecPeces() {
+      window.location.href = 'Peces';
+    }
+    function redirecPeceras() {
+        window.location.href = 'Peceras';
+    }
+    function redirecFiltros() {
+        window.location.href = 'Filtros';
+    }
+    function redirecAditivos() {
+        window.location.href = 'Aditivos';
+    }
+</script>
+
+

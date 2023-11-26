@@ -1,0 +1,17 @@
+﻿@font-face {
+    font-family: warcraft;
+    font-style: normal;
+    font-weight: 500;
+    src: local('warcraft'),url(https://fonts.cdnfonts.com/s/38753/Warcraft-Yj2j.woff) format('woff')
+}
+
+body, h1, h2, h3, h4, h5, h6, p, div, span {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: goldenrod;
+    font-family: 'warcraft';
+}

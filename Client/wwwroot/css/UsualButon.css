@@ -1,0 +1,27 @@
+﻿.boton-usual {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid gold;
+    border-radius: 10px;
+    background-color: goldenrod;
+    color: black;
+    transition: background-color 0.3s, border-color 0.3s;
+    outline: none;
+}
+
+    .boton-usual:hover {
+        background-color: darkgoldenrod;
+        border-color: orange;
+        margin: 5px;
+    }
+
+    .boton-usual:active,
+    .boton-usual:focus {
+        border-color: coral;
+    }
+
