@@ -23,5 +23,58 @@ namespace MurkyShop.Server.Extensions
                         CategoryName = productCategory.Name
                     }).ToList();
         }
+
+        public static ProductDto ConvertToDto(this Pez peces,
+                                            ProductCategory productCategory)
+        {
+            return new ProductDto
+            { 
+                Id = peces.Id,
+                Name =  peces.Nombre,
+                Description = peces.Descripcion,
+                ImageUrl = peces.ImageURL,
+                Price = peces.Precio,
+                Qty = peces.Qty,
+                CategoryId = peces.CategoryId,
+                CategoryName = productCategory.Name
+            };
+        }
+
+        public static IEnumerable<CartItemDto> ConvertToDto(this IEnumerable<CartItem> cartItems,
+                                                            IEnumerable<Pez> peces)
+        {
+            return (from cartItem in cartItems
+                    join product in peces
+                    on cartItem.ProductID equals product.Id
+                    select new CartItemDto
+                    {
+                        Id = cartItem.Id,
+                        ProductID = cartItem.ProductID,
+                        ProductName = product.Nombre,
+                        ProductDescription = product.Descripcion,
+                        ProductImageURL = product.ImageURL,
+                        Price = product.Precio,
+                        CartId = cartItem.CartID,
+                        Qty = cartItem.Qty,
+                        TotalPrice = product.Precio * cartItem.Qty
+                    }).ToList();
+        }
+
+        public static CartItemDto ConvertToDto(this CartItem cartItem,
+                                                            Pez product)
+        {
+            return new CartItemDto
+                {
+                    Id = cartItem.Id,
+                    ProductID = cartItem.ProductID,
+                    ProductName = product.Nombre,
+                    ProductDescription = product.Descripcion,
+                    ProductImageURL = product.ImageURL,
+                    Price = product.Precio,
+                    CartId = cartItem.CartID,
+                    Qty = cartItem.Qty,
+                    TotalPrice = product.Precio * cartItem.Qty
+                };
+        }
     }
 }

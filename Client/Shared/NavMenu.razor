@@ -1,4 +1,8 @@
-﻿<link rel="stylesheet" href="css/warcraft.css" />
+﻿﻿
+@implements IDisposable
+@inject IShoppingCartService shoppingCartService
+
+<link rel="stylesheet" href="css/warcraft.css" />
 
 <nav class="navbar navbar-expand-md navbar-white bg-black" >
 
@@ -80,9 +84,12 @@
         <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
             <ul class="navbar-nav me-auto mb-2 mb-md-0 ">
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="Carrito" style="font-size:30px">
-                        <span class="oi oi-cart" aria-hidden="true"></span> Carrito
-                    </NavLink>
+@*                     <a href="ShoppingCart"> *@
+                        <NavLink class="nav-link" href="Carrito" style="font-size:30px">
+                            <span class="oi oi-cart" aria-hidden="true"></span> Carrito
+                            <span class="badge bg-dark">@shoppingCartItemCount</span>
+                        </NavLink>
+@*                     </a> *@
                 </li>
             </ul>
         </div>
@@ -96,10 +103,26 @@
     private bool expandSubNavSettings;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
     private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
+    private int shoppingCartItemCount = 0;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
 
+    protected override void OnInitialized()
+    {
+        shoppingCartService.OnShoppingCartChanged += ShoppingCartChanged;
+    }
+
+    protected void ShoppingCartChanged(int totalQty)
+    {
+        shoppingCartItemCount = totalQty;
+        StateHasChanged();
+    }
+
+    void IDisposable.Dispose()
+    {
+        shoppingCartService.OnShoppingCartChanged -= ShoppingCartChanged;
+    }
 }

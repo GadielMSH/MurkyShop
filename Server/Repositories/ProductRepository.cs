@@ -19,14 +19,16 @@ namespace MurkyShop.Server.Repositories
             return categories;
         }
 
-        public Task<ProductCategory> GetCategory(int id)
+        public async Task<ProductCategory> GetCategory(int id)
         {
-            throw new NotImplementedException();
+            var category = await applicationDbContext.ProductCategories.SingleOrDefaultAsync(c => c.Id == id);
+            return category;
         }
 
-        public Task<Pez> GetItem(int id)
+        public async Task<Pez> GetItem(int id)
         {
-            throw new NotImplementedException();
+            var product = await applicationDbContext.Peces.FindAsync(id);
+                return product;
         }
 
         public async Task<IEnumerable<Pez>> GetItems()

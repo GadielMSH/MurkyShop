@@ -14,6 +14,33 @@ namespace MurkyShop.Client.Services
             this.httpClient = httpClient;
         }
 
+        public async Task<ProductDto> GetItem(int id)
+        {
+            try
+            {
+                var response = await httpClient.GetAsync($"api/Catalogos/{id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return default(ProductDto);
+                    }
+                    return await response.Content.ReadFromJsonAsync<ProductDto>();
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public async Task<IEnumerable<ProductDto>> GetItems()
         {
             try

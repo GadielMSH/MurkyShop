@@ -1,0 +1,43 @@
+﻿.text-globe {
+    display: flex;
+    background-color: #0FC1F1;
+    padding: 0px;
+    border-radius: 100px;
+    border: 2px solid white;
+    min-width: 40px;
+    max-width: 220px;
+    min-height: 40px;
+    margin: 20px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+}
+
+    .text-globe::before,
+    .text-globe::after {
+        content: "";
+        background-color: #FFF;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        z-index: -1;
+        border: 2px solid white;
+    }
+
+    .text-globe::before {
+        width: 44px;
+        height: 44px;
+        top: -12px;
+        left: 28px;
+        box-shadow: -50px 30px 0 -12px #FFF;
+    }
+
+    .text-globe::after {
+        bottom: -10px;
+        right: 26px;
+        width: 30px;
+        height: 30px;
+        box-shadow: 40px -34px 0 0 #FFF, -28px -6px 0 -2px #FFF, -24px 17px 0 -6px #FFF, -5px 25px 0 -10px #FFF;
+    }
