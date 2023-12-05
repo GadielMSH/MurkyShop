@@ -20,5 +20,9 @@ namespace MurkyShop.Server.Data
         public DbSet<Pez> Peces { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Pecera> Peceras { get; set; }
+        public DbSet<Filtro> Filtros {  get; set; }
+        public DbSet<Aditivo> Aditivos { get; set; }
     }
 }

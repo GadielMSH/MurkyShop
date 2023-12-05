@@ -15,20 +15,57 @@ else if (ErrorMessage != null)
 }
 else
 {
-    <div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="row mb-5">
+        <div class="col-md-9">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="@Product.ImageUrl" width="300" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-8">
+                    <h5 style="font-size:40px">@Product.Name</h5>
+                        <div style="font-size:30px">
+                            <b>$@Product.Price</b> (Disponibles: <b>@Product.Qty</b>)
+                        </div>
+                    <div style="font-size:30px">
+                        <button class="boton-usual" type="submit" @onclick="() => (AddToCart_Click(new CartItemToAddDto{
+                            CartId = HardCoded.CartId,
+                            ProductId = Product.Id,
+                            Qty = 1
+                        }))">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mt-2">
+                <div class="col text-globe" style="font-size:33px; color:black">
+                    ¡Elige sabiamente, Mortal!
+                </div>
+            </div>
+            <div class="mt-2">
+                <img src="/Images/Neptulon.png" style="float: right;width: 380px; height: auto;" alt="">
+            </div>
+        </div>
+    </div>
+    @* <div class="container">
         <div class="row">
             <div class="col">
             </div>
 
             <div class="col-4">
-                <img src="@Product.ImageUrl" style="float: left; width: 250px; height: auto;" alt="">
+                <img src="@Product.ImageUrl" style="float: left; width: 250px; height: auto;" alt="" class="img-thumbnail">
             </div>
 
             <div class="col-5 text-center" style="font-size:40px; place-items: center;">
                 <h1 style="font-size:50px">@Product.Name</h1>
                 <p class="mb-4">
                     <b>
-                        $@Product.Price (@Product.Qty items in stock)
+                        $@Product.Price (@Product.Qty disponibles)
                     </b>
                 </p>
                 <div>
@@ -62,5 +99,9 @@ else
             </div>
         </div>
 
-    </div>
+    </div>*@
+    <br>
+    <br>
+    <br>
+    <h1 style="font-size:18px">Esta pagina fue creada con fines academicos sin fines de lucro; el nombre, asi como el arte en las imagenes son propiedad de Blizzard Entertainment, Inc.</h1>
 }

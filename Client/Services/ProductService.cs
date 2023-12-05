@@ -40,19 +40,46 @@ namespace MurkyShop.Client.Services
                 throw;
             }
         }
-
         public async Task<IEnumerable<ProductDto>> GetItems()
         {
             try
             {
-                var product = await this.httpClient.GetFromJsonAsync<IEnumerable<ProductDto>>("api/Products");
+                var response = await this.httpClient.GetAsync("api/Product");
 
-                return product;
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return Enumerable.Empty<ProductDto>();
+                    }
+
+                    return await response.Content.ReadFromJsonAsync<IEnumerable<ProductDto>>();
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Http status code: {response.StatusCode} message: {message}");
+                }
+
             }
             catch (Exception)
             {
+                //Log exception
                 throw;
             }
         }
+        //public async Task<IEnumerable<ProductDto>> GetItems()
+        //{
+        //    try
+        //    {
+        //        var product = await this.httpClient.GetFromJsonAsync<IEnumerable<ProductDto>>("api/Products");
+
+        //        return product;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
     }
 }

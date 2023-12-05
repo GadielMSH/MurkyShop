@@ -23,6 +23,9 @@ namespace MurkyShop.Client.Pages
             try
             {
                 Product = await ProductService.GetItem(Id);
+                var shoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
+                var totalQty = shoppingCartItems.Sum(i => i.Qty);
+                ShoppingCartService.RaiseEventOnShoppingCartChanged(totalQty);
             }
             catch (Exception ex)
             {
@@ -47,7 +50,6 @@ namespace MurkyShop.Client.Pages
             catch (Exception)
             {
 
-                //Log Exception
             }
         }
     }

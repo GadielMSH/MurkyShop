@@ -5,75 +5,75 @@ namespace MurkyShop.Server.Extensions
 {
     public static class DtoConversions
     {
-        public static IEnumerable<ProductDto> ConvertToDto(this IEnumerable<Pez> peces,
+        public static IEnumerable<ProductDto> ConvertToDto(this IEnumerable<Product> products,
                                             IEnumerable<ProductCategory> productCategories)
         {
-            return (from pez in peces
+            return (from product in products
                     join productCategory in productCategories
-                    on pez.CategoryId equals productCategory.Id
+                    on product.CategoryId equals productCategory.Id
                     select new ProductDto
                     {
-                        Id = pez.Id,
-                        Name = pez.Nombre,
-                        Description = pez.Descripcion,
-                        ImageUrl = pez.ImageURL,
-                        Price = pez.Precio,
-                        Qty = pez.Qty,
-                        CategoryId = pez.CategoryId,
+                        Id = product.Id,
+                        Name = product.Name,
+                        Description = product.Description,
+                        ImageUrl = product.ImageURL,
+                        Price = product.Price,
+                        Qty = product.Qty,
+                        CategoryId = product.CategoryId,
                         CategoryName = productCategory.Name
                     }).ToList();
         }
 
-        public static ProductDto ConvertToDto(this Pez peces,
+        public static ProductDto ConvertToDto(this Product product,
                                             ProductCategory productCategory)
         {
             return new ProductDto
             { 
-                Id = peces.Id,
-                Name =  peces.Nombre,
-                Description = peces.Descripcion,
-                ImageUrl = peces.ImageURL,
-                Price = peces.Precio,
-                Qty = peces.Qty,
-                CategoryId = peces.CategoryId,
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                ImageUrl = product.ImageURL,
+                Price = product.Price,
+                Qty = product.Qty,
+                CategoryId = product.CategoryId,
                 CategoryName = productCategory.Name
             };
         }
 
         public static IEnumerable<CartItemDto> ConvertToDto(this IEnumerable<CartItem> cartItems,
-                                                            IEnumerable<Pez> peces)
+                                                            IEnumerable<Product> products)
         {
             return (from cartItem in cartItems
-                    join product in peces
+                    join product in products
                     on cartItem.ProductID equals product.Id
                     select new CartItemDto
                     {
                         Id = cartItem.Id,
                         ProductID = cartItem.ProductID,
-                        ProductName = product.Nombre,
-                        ProductDescription = product.Descripcion,
+                        ProductName = product.Name,
+                        ProductDescription = product.Description,
                         ProductImageURL = product.ImageURL,
-                        Price = product.Precio,
+                        Price = product.Price,
                         CartId = cartItem.CartID,
                         Qty = cartItem.Qty,
-                        TotalPrice = product.Precio * cartItem.Qty
+                        TotalPrice = product.Price * cartItem.Qty
                     }).ToList();
         }
 
         public static CartItemDto ConvertToDto(this CartItem cartItem,
-                                                            Pez product)
+                                                            Product product)
         {
             return new CartItemDto
                 {
                     Id = cartItem.Id,
                     ProductID = cartItem.ProductID,
-                    ProductName = product.Nombre,
-                    ProductDescription = product.Descripcion,
+                    ProductName = product.Name,
+                    ProductDescription = product.Description,
                     ProductImageURL = product.ImageURL,
-                    Price = product.Precio,
+                    Price = product.Price,
                     CartId = cartItem.CartID,
                     Qty = cartItem.Qty,
-                    TotalPrice = product.Precio * cartItem.Qty
+                    TotalPrice = product.Price * cartItem.Qty
                 };
         }
     }

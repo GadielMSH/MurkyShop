@@ -168,4 +168,16 @@
     }
 </script>
 
+@code {
+    [Inject]
+    public IShoppingCartService ShoppingCartService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var shoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
+        var totalQty = shoppingCartItems.Sum(i => i.Qty);
+
+        ShoppingCartService.RaiseEventOnShoppingCartChanged(totalQty);
+    }
+}
 

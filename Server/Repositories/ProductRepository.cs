@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MurkyShop.Server.Data;
+using MurkyShop.Server.Migrations;
 using MurkyShop.Server.Repositories.Contracts;
 using MurkyShop.Shared.Models;
 
@@ -25,17 +26,17 @@ namespace MurkyShop.Server.Repositories
             return category;
         }
 
-        public async Task<Pez> GetItem(int id)
+        public async Task<Product> GetItem(int id)
         {
-            var product = await applicationDbContext.Peces.FindAsync(id);
+            var product = await applicationDbContext.Products.FindAsync(id);
                 return product;
         }
 
-        public async Task<IEnumerable<Pez>> GetItems()
+        public async Task<IEnumerable<Product>> GetItems()
         {
-            var pez = await this.applicationDbContext.Peces.ToListAsync();
+            var products = await this.applicationDbContext.Products.ToListAsync();
 
-            return pez;
+            return products;
         }
     }
 }

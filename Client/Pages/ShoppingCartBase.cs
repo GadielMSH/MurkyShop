@@ -14,7 +14,7 @@ namespace MurkyShop.Client.Pages
         public IShoppingCartService ShoppingCartService { get; set; }
         public List<CartItemDto> ShoppingCartItems { get; set; }
         public string ErrorMessage { get; set; }
-        protected float TotalPrice { get; set; }
+        protected decimal TotalPrice { get; set; }
         protected int TotalQuantity { get; set; }
 
         protected override async Task OnInitializedAsync()

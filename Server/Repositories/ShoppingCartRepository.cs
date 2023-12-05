@@ -25,7 +25,7 @@ namespace MurkyShop.Server.Repositories
         {
             if(await CartItemExists(cartItemToAddDto.CartId, cartItemToAddDto.ProductId) == false)
             {
-                var item = await (from product in this.applicationDbContext.Peces
+                var item = await (from product in this.applicationDbContext.Products
                                   where product.Id == cartItemToAddDto.ProductId
                                   select new CartItem
                                   {

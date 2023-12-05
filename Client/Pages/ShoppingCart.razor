@@ -29,14 +29,17 @@ else
                         </div>
                         <div class="col-md-8">
                             <h5 style="font-size:40px">@item.ProductName</h5>
-                            <span style="font-size:30px">
-                                Precio: <b>$@item.Price</b>
-                                <input
-                                 type="number" @bind="@item.Qty" />
-                                <button data-itemId="@item.Id" class="btn btn-info btn-sm" @onclick="(() => UpdateQtyCartItem_Click(item.Id, item.Qty))">
-                                    Seleccionar Cantidad
-                                </button>
-                            </span>
+                            <div style="font-size:30px">
+                                Precio: <b>$@item.Price</b> (Disponibles: <b>@item.Qty</b>)
+                                <div>
+                                    <input type="number" @bind="@item.Qty" />
+                                </div>
+                                <div>
+                                    <button style="font-size:20px" data-itemId="@item.Id" class="btn btn-info btn-sm" @onclick="(() => UpdateQtyCartItem_Click(item.Id, item.Qty))">
+                                        Actualizar Cantidad
+                                    </button>
+                                </div>
+                            </div>
                             <div style="font-size:30px">
                                 <button @onclick="(() => DeleteCartItem_Click(item.Id))"
                                         class="boton-usual">
@@ -49,12 +52,18 @@ else
                 }
             </div>
             <div class="col-md-3">
-                <h5>Cart Summary</h5>
-                <div class="mt-2">(@TotalQuantity Articulos)</div>
                 <div class="mt-2">
-                    <div>Total - <b>$@TotalPrice</b></div>
-                    <a href="#" class="btn btn-success">
-                        <span class="oi oi-credit-card"></span>&nbsp; Proceed to Checkout
+                    <h5 style="font-size:40px; text-align:center">¿Todo listo?</h5>
+                </div>
+                <div class="mt-2">
+                    <img src="/Images/tortolian.png" style="width: 300px; height: auto;" alt="">
+                </div>
+                <h5 style="font-size:40px">Resumen</h5>
+                <div class="mt-2" style="font-size:30px">(@TotalQuantity Articulos)</div>
+                <div class="mt-2">
+                    <div style="font-size:40px">Total - <b>$@TotalPrice</b></div>
+                    <a href="#" class="btn btn-success" style="font-size:30px">
+                        <span class="oi oi-credit-card"></span>&nbsp; Proceder al pago
                     </a>
                 </div>
             </div>
@@ -63,8 +72,30 @@ else
 
     else
     {
-        <h5 style="font-size:40px">El Carrito esta Vacio</h5>
+        <br>
+        <br>
+        <h5 style="font-size:40px; text-align:center">El Carrito esta Vacio</h5>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container text-center">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2">
+                </div>
+                <div class="col-md-auto">
+                    <img src="/Images/torty.png" style="width: 300px; height: auto;" alt="">
+                </div>
+                <div class="col col-lg-2">
+                </div>
+            </div>
+        </div>
     }
+    <br>
+    <br>
+    <br>
+    <h1 style="font-size:18px">Esta pagina fue creada con fines academicos sin fines de lucro; el nombre, asi como el arte en las imagenes son propiedad de Blizzard Entertainment, Inc.</h1>
 }
 
 

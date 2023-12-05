@@ -14,8 +14,8 @@ namespace MurkyShop.Shared.Dtos
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public string ProductImageURL { get; set; }
-        public float Price { get; set; }
-        public float TotalPrice { get; set; }
+        public decimal Price { get; set; }
+        public decimal TotalPrice { get; set; }
         public int Qty { get; set; }
     }
 }
