@@ -74,10 +74,6 @@ namespace MurkyShop.Client.Pages
             }
 
         }
-        //protected async Task UpdateQty_Input(int id)
-        //{
-        //    await Js.InvokeVoidAsync("MakeUpdateQtyButtonVisible", id, true);
-        //}
 
         private void UpdateItemTotalPrice(CartItemDto cartItemDto)
         {
@@ -87,7 +83,6 @@ namespace MurkyShop.Client.Pages
             {
                 item.TotalPrice = cartItemDto.Price * cartItemDto.Qty;
             }
-            //await ManageCartItemsLocalStorageService.SaveCollection(ShoppingCartItems);
         }
         private void CalculateCartSummaryTotals()
         {
@@ -113,8 +108,6 @@ namespace MurkyShop.Client.Pages
             var cartItemDto = GetCartItem(id);
 
             ShoppingCartItems.Remove(cartItemDto);
-
-            //await ManageCartItemsLocalStorageService.SaveCollection(ShoppingCartItems);
 
         }
 

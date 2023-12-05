@@ -96,7 +96,7 @@
 @code {
     List<Pez> Allpeces = new List<Pez>();
     List<Pez> peces = new List<Pez>();
-    //List<ProductDto> Products { get; set; }
+
     [Inject]
     public IShoppingCartService ShoppingCartService { get; set; }
 
@@ -111,100 +111,10 @@
                 Id = p.Id,
             }).ToList();
 
-        //Products = await client.GetFromJsonAsync<List<ProductDto>>("api/Catalogos");
         var shoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
         var totalQty = shoppingCartItems.Sum(i => i.Qty);
 
         ShoppingCartService.RaiseEventOnShoppingCartChanged(totalQty);
     }
 }
-
-@* @page "/Peces"
-@inherits PecesBase
-@inject HttpClient client
-
-<PageTitle>Peces | Murky Shop</PageTitle>
-
-<link rel="stylesheet" href="css/warcraft.css" />
-<link rel="stylesheet" href="css/UsualButon.css" />
-
-<header style="font-size:60px">
-    <div class="row" style="font-size:60px">
-        <div class="col text-center">
-            ¡Te damos la bienvenida al abismo!
-        </div>
-    </div>
-    <div class="row">
-        <img src="/Images/Azshara.jpg" class="rounded img-fluid" alt="">
-    </div>
-</header>
-
-<body>
-    <br>
-    <br>
-    <br>
-    <br>
-    @if (peces == null)
-    {
-        <h3>Loading products...</h3>
-    }
-    else
-    {
-        var productCount = peces.Count();
-
-        @if (productCount > 0)
-        {
-            @foreach (var item in peces)
-            {
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                        </div>
-
-                        <div class="col-4">
-                            <img src="@item.ImageURL" style="float: left;
-                                 width: 250px;
-                                 height: auto;" alt="">
-                        </div>
-
-                        <div class="col-5 text-center" style="font-size:40px; place-items: center;">
-
-                            <h1 style="font-size:50px">@item.Nombre</h1>
-                            <br>
-                            <h1>@item.Descripcion</h1>
-                            <br>
-                            <h1>Agua: item.Agua</h1>
-                            <br>
-                            <h1>pH: item.pH</h1>
-                            <br>
-                            <h1>Temperatura: item.Temperatura</h1>
-                            <br>
-                            <h1>Precio por unidad: $item.Precio</h1>
-                            <br>
-                            <button class="boton-usual" type="submit">Agregar al carrito</button>
-                        </div>
-
-                        <div class="col">
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-            }
-        }
-    }
-    }
-    }
-</body>
-
-@code {
-    List<Pez> peces = new List<Pez>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        peces = await client.GetFromJsonAsync<List<Pez>>("api/Peces");
-    }
-}*@
 

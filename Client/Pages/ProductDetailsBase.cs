@@ -38,13 +38,6 @@ namespace MurkyShop.Client.Pages
             try
             {
                 var cartItemDto = await ShoppingCartService.AddItem(cartItemToAddDto);
-
-                //if (cartItemDto != null)
-                //{
-                //    ShoppingCartItems.Add(cartItemDto);
-                //    await ManageCartItemsLocalStorageService.SaveCollection(ShoppingCartItems);
-                //}
-
                 NavigationManager.NavigateTo("/Carrito");
             }
             catch (Exception)

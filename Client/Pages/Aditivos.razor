@@ -84,7 +84,7 @@
 @code {
     List<Aditivo> Alladitivo = new List<Aditivo>();
     List<Aditivo> aditivos = new List<Aditivo>();
-    //List<ProductDto> Products { get; set; }
+
     [Inject]
     public IShoppingCartService ShoppingCartService { get; set; }
 
@@ -99,7 +99,7 @@
                 Id = p.Id,
             }).ToList();
 
-        //Products = await client.GetFromJsonAsync<List<ProductDto>>("api/Catalogos");
+
         var shoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
         var totalQty = shoppingCartItems.Sum(i => i.Qty);
 

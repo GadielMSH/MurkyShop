@@ -64,22 +64,8 @@ namespace MurkyShop.Client.Services
             }
             catch (Exception)
             {
-                //Log exception
                 throw;
             }
         }
-        //public async Task<IEnumerable<ProductDto>> GetItems()
-        //{
-        //    try
-        //    {
-        //        var product = await this.httpClient.GetFromJsonAsync<IEnumerable<ProductDto>>("api/Products");
-
-        //        return product;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
     }
 }
